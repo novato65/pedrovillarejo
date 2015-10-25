@@ -69,7 +69,28 @@ public class CustomAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Toast.makeText(context, "Ha seleccionado "+result[position], Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Ha seleccionado " + result[position], Toast.LENGTH_LONG).show();
+                //posiciones
+                //position = 0 -->llamar
+                //position = 1 -->abrir web de autos nuevos
+                //position = 2 -->abrir web de autos usados
+                //position = 3 -->abrir web de dto a proveedores
+                //position = 4 -->abrir proceso de cita
+                //position = 5 -->abrir mapa
+                //position = 6 -->enviar email
+                //position = 7 -->enviar SMS
+                //position = 8 -->abrir proceso compartir app
+
+
+
+
+
+
+
+
+                if (position == 0) {
+                    Toast.makeText(context, "Ha seleccionado LLAMAR A MOVIL" + result[position], Toast.LENGTH_LONG).show();
+                }
             }
         });
 
