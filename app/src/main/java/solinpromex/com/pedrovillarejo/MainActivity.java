@@ -11,6 +11,10 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.PushService;
+
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
@@ -22,9 +26,19 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Enable Local Datastore.
+        Parse.enableLocalDatastore(this);
+
+        Parse.initialize(this, "BgMIR069diLQoLTF1vRm0E7IMhLQ31eQWaqba64S", "8eqKjrvR8lVyJT3qUWHfBnSxTiX2Z8CE9wWPaY3k");
+
+
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "barco14");
+        testObject.saveInBackground();
         setContentView(R.layout.activity_main);
         gv=(GridView) findViewById(R.id.grid);
-        gv.setAdapter(new CustomAdapter(this, prgmNameList,prgmImages));
+        gv.setAdapter(new CustomAdapter(this, prgmNameList, prgmImages));
     }
 
 }

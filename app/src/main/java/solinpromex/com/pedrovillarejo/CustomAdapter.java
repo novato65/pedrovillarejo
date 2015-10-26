@@ -1,6 +1,7 @@
 package solinpromex.com.pedrovillarejo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -88,8 +89,9 @@ public class CustomAdapter extends BaseAdapter {
 
 
 
-                if (position == 0) {
-                    Toast.makeText(context, "Ha seleccionado LLAMAR A MOVIL" + result[position], Toast.LENGTH_LONG).show();
+                if (position == 4) {
+                    Toast.makeText(context, "Ha seleccionado CITA A SERVICIO" + result[position], Toast.LENGTH_LONG).show();
+
                 }
             }
         });

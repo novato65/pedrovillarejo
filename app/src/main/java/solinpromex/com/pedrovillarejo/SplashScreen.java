@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.PushService;
 
 /**
  * Created by modestovascofornas on 10/23/15.
@@ -18,14 +19,7 @@ public class SplashScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
 
-        // Enable Local Datastore.
-        Parse.enableLocalDatastore(this);
 
-        Parse.initialize(this, "BgMIR069diLQoLTF1vRm0E7IMhLQ31eQWaqba64S", "8eqKjrvR8lVyJT3qUWHfBnSxTiX2Z8CE9wWPaY3k");
-
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
 
 
 
