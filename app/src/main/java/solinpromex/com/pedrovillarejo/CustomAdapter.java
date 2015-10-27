@@ -2,6 +2,8 @@ package solinpromex.com.pedrovillarejo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,6 +12,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.List;
+
 /**
  * Created by modestovascofornas on 10/24/15.
  */
@@ -83,10 +93,33 @@ public class CustomAdapter extends BaseAdapter {
                 //position = 8 -->abrir proceso compartir app
 
 
+                if (position == 0) {
 
+                    //Toast.makeText(context, "Ha seleccionado LLAMAR" + result[position], Toast.LENGTH_LONG).show();
 
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery("datos_contacto");
+                    query.whereEqualTo("tipo_contacto", "celular");
+                    query.findInBackground(new FindCallback<ParseObject>() {
+                        public void done(List<ParseObject> scoreList, ParseException e) {
+                            if (e == null) {
+                                int len = scoreList.size();
+                                for (int i = 0; i < len; i++) {
+                                    ParseObject p = scoreList.get(i);
+                                    String numero = p.getString("dato_contacto");
 
+                                    Log.d("score", "Celular: " + numero);
 
+                                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + numero));
+                                    context.startActivity(intent);
+
+                                }
+                            } else {
+                                Log.d("score", "Error: " + e.getMessage());
+                            }
+                        }
+                    });
+
+                }
 
 
                 if (position == 4) {

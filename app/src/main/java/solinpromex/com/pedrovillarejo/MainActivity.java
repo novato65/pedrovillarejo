@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.parse.Parse;
+import com.parse.ParseAnalytics;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.PushService;
@@ -22,7 +23,7 @@ public class MainActivity extends Activity {
     GridView gv;
     Context context;
     ArrayList prgmName;
-    public static String [] prgmNameList={"Llámenos","Autos Nuevos","Seminuevos","Descuento Proveedores","Citas a servicio","Mapa","Enviar Email","Enviar Mensaje","Compartir App"};
+    public static String [] prgmNameList={"Llámeme","Autos Nuevos","Seminuevos","Descuento Proveedores","Citas a servicio","Mapa","Enviar Email","Enviar Mensaje","Compartir App"};
     public static int [] prgmImages={R.mipmap.llamar,R.mipmap.nuevos,R.mipmap.seminuevos,R.mipmap.descuento,R.mipmap.citas,R.mipmap.mapa,R.mipmap.email,R.mipmap.sms,R.mipmap.compartir};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,11 @@ public class MainActivity extends Activity {
 
         Parse.initialize(this, "BgMIR069diLQoLTF1vRm0E7IMhLQ31eQWaqba64S", "8eqKjrvR8lVyJT3qUWHfBnSxTiX2Z8CE9wWPaY3k");
         ParseInstallation.getCurrentInstallation().saveInBackground();
-       // PushService.subscribe(context, "yourChannelName", MainActivity.class);
+
+
+        ParseAnalytics.trackAppOpened(getIntent());
+
+        // PushService.subscribe(context, "yourChannelName", MainActivity.class);
 
         setContentView(R.layout.activity_main);
         gv=(GridView) findViewById(R.id.grid);
